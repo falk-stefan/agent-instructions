@@ -220,6 +220,9 @@ gh api repos/<owner>/<repo>/issues/<parent-number>/sub_issues \
   --method POST -F sub_issue_id="$CHILD_ID"
 ```
 
+This works across repos too: the child's `<owner>/<repo>` in the first call can differ from the
+parent's in the second — `sub_issues` takes a database ID, not a repo-scoped reference.
+
 When wiring up multiple issues, run each command individually — one per issue. Do not batch them
 into a loop over a list of numbers; a single failure is then silent.
 
@@ -270,12 +273,15 @@ Same [repo scope](#repo-scope) rule applies: across repos, use `Closes <owner>/<
 
 ## Work Spanning Multiple Repositories
 
-- **A milestone that spans repos gets one Epic per repo it touches**, cross-linked in the bodies,
-  because GitHub's sub-issues do not span repositories cleanly. The Epic in the repo that owns the
-  spec holds the acceptance criterion verbatim; each other Epic states its own narrower criterion
-  and points back.
-- **Cross-link related issues with the fully qualified form** (`<owner>/<repo>#<number>`), since a
-  bare `#<number>` resolves to the current repo.
+- **Sub-issues attach across repos fine** — the `sub_issues` API takes the child's database ID
+  regardless of which repo it lives in (see [Sub-issues](#sub-issues)). Default to a single Epic,
+  in the repo the initiative is centered on, with Tasks from other repos attached as native
+  sub-issues — its progress bar then reflects all of them, not just the same-repo ones.
+- **A milestone that spans repos** still gets one Epic per repo when each repo's slice needs its
+  own acceptance criterion tracked independently. The Epic in the repo that owns the spec holds
+  the criterion verbatim; each other Epic states its own narrower criterion and points back to it.
+- **Cross-link related issues with the fully qualified form** (`<owner>/<repo>#<number>`) in a
+  Task's `## Part of` line, since a bare `#<number>` resolves to the current repo.
 - **All repositories share one project board.**
 
 ---
