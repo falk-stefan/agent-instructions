@@ -10,6 +10,17 @@ GitHub issues are the single source of truth.
 
 ---
 
+## Repo Scope
+
+Issue numbers are per-repo. Create an issue in the repo whose code it concerns.
+
+A bare `#N` in a commit message, PR body, or closing keyword resolves within that same repo. If it
+lands in the wrong repo, it either resolves to nothing or — worse — to a different, unrelated issue
+that happens to share the number. Referencing an issue from another repo anywhere requires the
+qualified form: `<owner>/<repo>#N`.
+
+---
+
 ## Hierarchy
 
 GitHub is flat by nature. We impose structure via **labels** and **sub-issues**. These serve different purposes and are both used:
@@ -223,8 +234,11 @@ gh project item-add <project-number> --owner <owner> \
 
 ### Transferring an issue between repos
 
-Labels must already exist in the target repo or they are silently dropped, and an existing
-sub-issue link follows the issue and must be re-pointed:
+Use this to fix an issue created in the wrong repo (see [Repo Scope](#repo-scope)).
+
+The issue gets a new number in the target repo — update any commit or PR that already referenced
+the old `#N`. Labels must already exist in the target repo or they are silently dropped, and an
+existing sub-issue link follows the issue and must be re-pointed:
 
 ```bash
 gh issue transfer <number> <owner>/<target-repo> --repo <owner>/<source-repo>
@@ -249,6 +263,8 @@ Closes #<number>
 ```
 
 Multiple issues can be closed in one PR: `Closes #<number>, closes #<other-number>`.
+
+Same [repo scope](#repo-scope) rule applies: across repos, use `Closes <owner>/<repo>#N`.
 
 ---
 

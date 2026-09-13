@@ -1,6 +1,8 @@
 # Commit Messages
 
-- Reference all relevant issues in the commit message
+- Reference all relevant issues in the commit message. Issue numbers are per-repo — see
+  [issue-management.md](../workflows/issue-management.md#repo-scope). Use `<owner>/<repo>#N` when
+  the issue lives in a different repo than the commit.
 - Provide a short description of the change
 - Never credit an agent, tool, model, or its vendor. No `Co-Authored-By` trailer for one, no
   "generated with" footer, no mention anywhere in the message. The commit is authored solely by
