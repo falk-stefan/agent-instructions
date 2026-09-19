@@ -135,6 +135,9 @@ Labels: `epic`, `feature` (or `enhancement` / `bug`)
 ## Description
 <What specifically needs to be done — concrete and scoped.>
 
+## Motivation
+<Why this matters — one short paragraph or bullets.>
+
 ## Part of
 #<epic-issue-number> — <Epic title>
 
@@ -155,6 +158,9 @@ Labels: `task`
 ```markdown
 ## Description
 <What is broken.>
+
+## Impact
+<How this issue affects stability, quality or user experience>
 
 ## Steps to Reproduce
 1. ...
