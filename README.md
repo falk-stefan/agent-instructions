@@ -16,6 +16,8 @@ unless the task at hand actually needs it.
 - `conventions/` — writing and commit conventions.
 - `coding-style/` — language- and framework-specific style rules.
 - `workflows/` — multi-step procedures (issue management, git worktrees, ...).
+- `roles/` — role definitions for agents acting as a specific persona
+- `agentic-workflows/` — procedures that coordinate multiple agents/roles against each other
 
 ## Using it in a project
 

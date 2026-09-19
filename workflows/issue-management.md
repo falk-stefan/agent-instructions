@@ -75,7 +75,7 @@ Follow these steps in order whenever asked to create issues.
 1. **Clarify** — If the request is fundamentally unclear, ask before proceeding.
 2. **Check for duplicates** — Search the repo before creating anything: `gh issue list --search "<keywords>" --state all`. Include closed issues; a bug filed twice is usually one that was closed once already. If an Epic covering the work exists, create Tasks under it instead of a new Epic.
 3. **Investigate** — Read the relevant code. Collect what the Context section needs: files involved, decisions already settled, acceptance criteria.
-4. **Draft** — Draft each issue body from the templates below, using what step 3 turned up. Only the body is drafted; the title and labels are passed via CLI.
+4. **Draft** — Draft each issue body from the templates below, using what step 3 turned up. Only the body is drafted; the title and labels are passed via CLI. For an Epic, if the user hasn't mentioned or excluded a RICE score, ask whether to add one; if yes, run [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) and include its output under `## RICE`.
 5. **Review with user** — Show the draft and ask for approval before creating anything.
 6. **Create** — Run the CLI commands. Add labels, add Tasks as sub-issues of their Epic, and add all issues to the project board. `gh issue create --label` fails if the label does not exist in the repo yet, so check `gh label list` first and create what is missing: `gh label create <name> --description "<what it marks>"`.
 7. **Create branch** — After creating the Epic, ask the user whether to create its branch now (see below). Skip if they want to defer it.
@@ -119,6 +119,11 @@ GitHub tracks sub-issue progress natively — no `## Tasks` checklist needed in 
 ## Functional Requirements
 - <User/product-facing statement of what the feature must do.>
 - <Another requirement — concrete but not implementation-specific.>
+
+## RICE _(optional)_
+<Score and argument breakdown from
+[pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md), in its output format. Omit
+this section entirely if the Epic wasn't scored.>
 
 ## Closing Condition
 <The condition under which this Epic closes. For a milestone Epic, the milestone's acceptance
@@ -295,3 +300,4 @@ Same [repo scope](#repo-scope) rule applies: across repos, use `Closes <owner>/<
 ## Related
 
 - [commit-messages.md](../conventions/commit-messages.md) — referencing issues from commits
+- [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) — scoring an Epic's RICE section
