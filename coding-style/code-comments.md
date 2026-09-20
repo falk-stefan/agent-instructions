@@ -1,5 +1,9 @@
 # Code Comments
 
+## Do Not
+
+- Avoid comments that explain what something is "not" unless it's actually valuable
+- Avoid comments that may be likely to become stale quickly
 
 ## Executing Code
 
