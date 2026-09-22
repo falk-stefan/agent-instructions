@@ -84,15 +84,15 @@ Follow these steps in order whenever asked to create issues.
 
 ## Branches
 
-| For | Name | Forks from | Merges into |
-|-----|------|------------|-------------|
-| Epic | `epic-<number>/<short-name>` | default branch | default branch |
-| Task | `task-<number>/<short-name>` | its Epic's branch | its Epic's branch |
-| Bug | `bug-<number>/<short-name>` | its Epic's branch, or the default branch if standalone | wherever it forked from |
+| For  | Name                         | Forks from                                             | Merges into                         |
+|------|------------------------------|--------------------------------------------------------|-------------------------------------|
+| Epic | `epic-<number>/<short-name>` | default branch                                         | default branch                      |
+| Task | `task-<number>/<short-name>` | default branch or it's Epic's branch                   | default branch or its Epic's branch |
+| Bug  | `bug-<number>/<short-name>`  | its Epic's branch, or the default branch if standalone | wherever it forked from             |
 
 `<number>` is the issue number and `<short-name>` is a few kebab-case words from the title. An
 Epic's branch merges to the default branch when the Epic's closing condition is met, not when its
-last Task lands.
+last Task lands. Branches for individual tasks from epics are optionsl. Standalone tasks can branch from the default branch.
 
 ---
 
@@ -141,17 +141,22 @@ Labels: `epic`, `feature` (or `enhancement` / `bug`)
 <What specifically needs to be done — concrete and scoped.>
 
 ## Motivation
-<Why this matters — one short paragraph or bullets.>
+<Why this matters — one short paragraph>
+
+## Implementation Details
+<How we plan to implement this — conceptually, not necessarily in high detail. Refencing classes or files as starting points is allowed.>
+
+## Testing
+<Critical paths or behavior to test — what core functionality should be covered by tests?>
+
+## Acceptance criteria:
+<What must be true for this to be done. Observable, not a restatement of the description.>
+<Another criterion.>
 
 ## Part of
 #<epic-issue-number> — <Epic title>
 
-## Context
-- **Files involved:** `<path/to/file>`, `<path/to/other>`, ...
-- **Decisions already made:** <any constraints or choices that are settled>
-- **Acceptance criteria:**
-    - <What must be true for this to be done. Observable, not a restatement of the description.>
-    - <Another criterion.>
+Note: Do not mention you and/or Anthropic
 ```
 
 Labels: `task`
@@ -174,6 +179,9 @@ Labels: `task`
 ## Expected vs Actual
 - **Expected:** ...
 - **Actual:** ...
+
+## Testing
+<What test(s) can we implement to avoid a regression?>
 
 ## Part of
 #<epic-issue-number> — <Epic title>  _(omit if standalone)_

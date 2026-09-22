@@ -34,9 +34,21 @@ if the feature has no issue yet, PM and PA work from the description given.
 1. **Scope.** The user must name the feature to score (issue number, link, title, or description)
    — this workflow never invents scope itself. If the request didn't name one, stop and ask the
    user to name it before dispatching anything.
-2. **Dispatch independently.** Spawn PM and PA as two separate agents. Each gets its role file, the
-   feature named in step 1, and a neutral prompt to **score, not rank**, it on its own two fields
-   per the [Position Template](#position-template) — PM scores Reach and Impact, PA scores Effort.
+2. **Dispatch independently.**
+   - **Gather calibration history first.** Look up prior Epics carrying a non-empty `## RICE`
+     section, sorted by creation date (most recent first), and take up to 5. For
+     each, extract only the two-sentence description and the *relevant role's own* component
+     scores — never the other role's fields, never the combined RICE value. Build one table per
+     role:
+
+     PM history: `| Feature | Description | R | I | C |`
+
+     PA history: `| Feature | Description | E | C |`
+
+   - Spawn PM and PA as two separate agents. Each gets its role file, the feature named in step 1,
+     its own calibration-history table, and a neutral prompt to **score, not rank**, it on its own
+     two fields per the [Position Template](#position-template) — PM scores Reach and Impact, PA
+     scores Effort.
    Neither is told the other's fields, that a combined score will be computed, or how it will be
    combined. This is deliberate: once an agent knows a formula exists, it can shade its own numbers
    to steer the outcome — scoring blind, on a narrow assigned dimension, removes that incentive, it
@@ -55,7 +67,9 @@ if the feature has no issue yet, PM and PA work from the description given.
    ```
 
    `Confidence_PA` is recorded separately and never folded into the formula — it is a flag, not a
-   multiplier.
+   multiplier. This asymmetry is intentional: Effort is the more auditable estimate, checkable
+   against actual files/modules, while Reach and Impact are inherently speculative market
+   judgments — so only the market-side confidence discounts the score.
 5. **Debate, where warranted.** Debate is reserved for cases where a score itself is suspect:
    - `Confidence_PM` or `Confidence_PA` is Low (1) — the underlying read is shaky and worth
      surfacing before it's treated as settled.
@@ -102,12 +116,17 @@ agent scores its own fields only — never the other side's — and does not kno
 be combined.
 
 **PM scores Reach and Impact:**
-- Reach (1–3): `<score>` — `<who/how many this reaches>` — source: `<issue / customer signal / usage data>`
-- Impact (1–3): `<score>` — `<value per use, competitive gap if any>` — source: `<issue / named competitor feature, or "none found">`
+- Reach (1–3): `<score>` — `<how many users/customers/events this touches in a given time period —
+  measured from usage data or a comparable named estimate, not a future projection>` — source:
+  `<usage data, customer signal, market research, or another named source>`
+- Impact (1–3): `<score>` — `<how much this moves the needle, per person/event reached, toward this
+  feature's actual goal — competitive parity, retention, or acquisition are all valid goals, but
+  name which one and, if it's acquisition, the concrete mechanism (virality, referral,
+  shareability) driving it>` — source: `<issue / named competitor feature, or "none found">`
 - Confidence (1–3): `<score>` — `<how solid the Reach/Impact read is>` — one-line why
 
 **PA scores Effort:**
-- Effort (1–3): `<score>` — `<what changes>` — source: `<files/modules touched>`
+- Effort (1–3): `<score>` — `<what changes, time required>` — source: `<files/modules touched>`
 - Confidence (1–3): `<score>` — `<how solid the Effort/scope read is — name any open question or unresolved dependency here>` — one-line why
 
 ## Output format

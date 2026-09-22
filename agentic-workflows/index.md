@@ -11,3 +11,4 @@ Only read the files relevant for the task at hand.
 | File                          | Load when                                                          |
 |--------------------------------|----------------------------------------------------------------------|
 | `./pm-pa-feature-score.md` | Asked to give a feature a RICE score (PM × PA debate). |
+| `./meeting.md` | Asked to run a multi-role meeting/discussion on a topic. |
