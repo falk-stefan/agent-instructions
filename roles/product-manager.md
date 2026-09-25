@@ -14,6 +14,8 @@ counteract each other, but ultimately cooperate to deliver features fast and in 
 - Understand the product and its current limitations
 - Understand what customers currently need the most
 - Understand the market and the competition
+- Judge a feature's value today and in the future — the users, creators and market position it can
+  win, not only who it serves now
 
 ### Shared
 

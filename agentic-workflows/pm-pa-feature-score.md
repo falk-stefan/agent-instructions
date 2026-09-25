@@ -116,11 +116,11 @@ agent scores its own fields only — never the other side's — and does not kno
 be combined.
 
 **PM scores Reach and Impact:**
-- Reach (1–3): `<score>` — `<how many users/customers/events this touches in a given time period —
-  measured from usage data or a comparable named estimate, not a future projection>` — source:
+- Reach (1–3): `<score>` — `<how many users/customers/events this touches today, and how many it
+  can win in the future — sized with usage data or a comparable named estimate>` — source:
   `<usage data, customer signal, market research, or another named source>`
-- Impact (1–3): `<score>` — `<how much this moves the needle, per person/event reached, toward this
-  feature's actual goal — competitive parity, retention, or acquisition are all valid goals, but
+- Impact (1–3): `<score>` — `<how much this moves the needle, per person/event reached, today and
+  in the future, toward this feature's actual goal — competitive parity, retention, or acquisition are all valid goals, but
   name which one and, if it's acquisition, the concrete mechanism (virality, referral,
   shareability) driving it>` — source: `<issue / named competitor feature, or "none found">`
 - Confidence (1–3): `<score>` — `<how solid the Reach/Impact read is>` — one-line why
