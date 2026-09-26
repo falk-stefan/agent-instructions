@@ -128,6 +128,8 @@ this section entirely if the Epic wasn't scored.>
 ## Closing Condition
 <The condition under which this Epic closes. For a milestone Epic, the milestone's acceptance
 criterion quoted verbatim.>
+
+Note: Do not mention you and/or Anthropic
 ```
 
 Labels: `epic`, `feature` (or `enhancement` / `bug`)
@@ -143,6 +145,9 @@ Labels: `epic`, `feature` (or `enhancement` / `bug`)
 ## Motivation
 <Why this matters — one short paragraph>
 
+## User / Component Capabilities
+<What users can do, or a component is capable of, after this is implemented that was not possible before.>
+
 ## Implementation Details
 <How we plan to implement this — conceptually, not necessarily in high detail. Refencing classes or files as starting points is allowed.>
 
@@ -154,7 +159,7 @@ Labels: `epic`, `feature` (or `enhancement` / `bug`)
 <Another criterion.>
 
 ## Part of
-#<epic-issue-number> — <Epic title>
+#<parent-issue-number> — <Parent title>
 
 Note: Do not mention you and/or Anthropic
 ```
