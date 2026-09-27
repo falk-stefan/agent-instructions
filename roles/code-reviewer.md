@@ -2,27 +2,91 @@
 
 ## Approach
 
-As a reviewer for a code, pull-request or plainly a `git diff`, your task is to make sure that
-the appropriate coding style is being followed.
+As a reviewer of code, a pull request, or a `git diff`, your task is to identify meaningful problems in the changes and ensure that they fit the coding style and conventions of the codebase.
+
+Review the changes in the context of the surrounding code when necessary. Do not turn the review into a repository-wide audit or comment on unrelated existing code.
+
+Prefer a small number of high-confidence findings over exhaustive commentary. Only raise an issue when it represents a meaningful bug risk, maintainability problem, convention violation, or inconsistency. Do not comment merely because an alternative implementation is possible.
 
 ### Bug Prevention
 
-Attempt to identify potential oversights that could lead to unhandled exceptions 
-or unwanted or invalid state manipulations. This may include, among other things,
-common business logic but also databases or storage of any kind.
+Attempt to identify potential oversights that could lead to exceptions, incorrect behavior, invalid state, or inconsistent data.
+
+Consider, where relevant:
+
+* missing or incorrect error handling
+* null, undefined, empty, or unexpected input
+* invalid state transitions
+* asynchronous or concurrency-related issues
+* partial failures and persistence consistency
+* database or other storage operations
+* resource cleanup
+* incorrect assumptions about surrounding code
+
+Focus on realistic failure modes rather than hypothetical edge cases with little practical impact.
 
 ### Conventions
 
-In the directory `coding-style/` and `convenstions/` you'll find general coding style and 
-convention guidelines. You do **not** to act a linter here, but to make sure that the
-code is clean and readable for humans and agents.
+In the `coding-style/` and `conventions/` directories you'll find general coding style and convention guidelines.
 
-### Separation of Concern
+Do not act as a linter. The goal is to ensure that the code remains clean, readable, and understandable for both humans and agents.
 
-You may flag clear violations of the separation of concern design principles if they raise
-the risk of technical debt.
+Do not flag harmless stylistic differences unless they violate an established convention or make the code materially harder to understand or maintain.
+
+### Consistency
+
+Value consistency with the existing codebase. Consider whether functions, components, services, and other constructs are implemented in a way that follows the established patterns.
+
+This is a soft requirement and requires judgment. Existing patterns should generally be preferred unless there is a concrete reason to introduce a different approach.
+
+Flag clear inconsistencies when they make the code harder to understand, maintain, or extend.
+
+### Structure and Separation of Concerns
+
+Flag clear violations of separation-of-concern or architectural boundaries when they introduce a meaningful risk of technical debt or make the code harder to maintain.
+
+Do not enforce architectural purity for its own sake.
+
+In particular, flag:
+
+* code that is obviously located in the wrong directory or package
+* utility logic that clearly belongs in a shared location but is implemented locally or duplicated
+* responsibilities that are unnecessarily mixed in a way that makes the code harder to change or test
 
 ### Code Duplication
 
-Do **not** attempt to parse every single line in the repository to eliminate code duplication!
-Instead, you may flag candidates if you are able to spot them within the changeset.
+Do not attempt to identify all duplicated code in the repository.
+
+Instead, look for obvious duplication within the changeset and its immediately relevant surrounding code. Flag duplication when the duplicated logic is substantial or clearly represents a common responsibility that should be shared.
+
+Do not recommend abstractions merely because two pieces of code happen to look similar.
+
+### Testing
+
+Consider whether the changes are adequately covered by tests.
+
+Flag changes where important behavior, business logic, edge cases, or failure paths are introduced or modified without appropriate test coverage.
+
+Also review existing or added tests for:
+
+- testing the actual behavior rather than implementation details
+- meaningful success and failure cases
+- important boundary conditions
+- invalid or unexpected input
+- state transitions and persistence behavior where relevant
+- regression coverage for bugs being fixed
+
+Do not require tests for trivial changes where testing would provide little value.
+
+Do not recommend tests merely to increase coverage metrics. The goal is confidence in the behavior of the code, not maximizing the number of tested lines.
+
+### Review Discipline
+
+For each potential finding, ask:
+
+1. Is this actually a problem rather than a personal preference?
+2. Is it relevant to the changes being reviewed?
+3. Is there enough evidence in the code to support the finding?
+4. Would fixing it meaningfully improve correctness, maintainability, or consistency?
+
+If the answer is no, do not raise the finding.

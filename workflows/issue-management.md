@@ -120,6 +120,11 @@ GitHub tracks sub-issue progress natively — no `## Tasks` checklist needed in 
 - <User/product-facing statement of what the feature must do.>
 - <Another requirement — concrete but not implementation-specific.>
 
+## Success Metrics _(optional)_
+<Metrics that help measure adoption, usage, or impact of the feature, including relevant
+behavior events. Consider whether any metrics could also be useful to expose publicly
+to users, creators, or other stakeholders.>
+
 ## RICE _(optional)_
 <Score and argument breakdown from
 [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md), in its output format. Omit
@@ -153,6 +158,10 @@ Labels: `epic`, `feature` (or `enhancement` / `bug`)
 
 ## Testing
 <Critical paths or behavior to test — what core functionality should be covered by tests?>
+
+## Success Metrics _(optional)_
+<Behavior events or measurements that this Task needs to introduce or change.
+Omit if metrics are defined entirely at the Epic level.>
 
 ## Acceptance criteria:
 <What must be true for this to be done. Observable, not a restatement of the description.>
