@@ -18,6 +18,7 @@ Only read the files relevant for the task at hand.
 | `workflows/playwright-mcp.md`      | Driving a browser to verify UI changes or debug live issues. |
 | `workflows/sentry.md`              | Looking up errors/issues in Sentry.                          |
 | `agentic-workflows/pm-pa-feature-score.md` | Asked to give a feature a RICE score (PM × PA debate).       |
+| `supervisor/parallelize-implementation-work.md` | Splitting well-designed implementation work across parallel sub-agents. |
 | `coding-style/backend.md`          | Writing or editing backend code.                             |
 | `coding-style/react.md`            | Writing or editing React components.                         |
 | `coding-style/typescript.md`       | TypeScript specific guidelines.                              |
