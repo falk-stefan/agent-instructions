@@ -24,6 +24,7 @@ Only read the files relevant for the task at hand.
 | `coding-style/typescript.md`       | TypeScript specific guidelines.                              |
 | `coding-style/code-comments.md`    | How to write comments inside executing code or tests.        |
 | `coding-style/code-doc-strings.md` | How to write doc strings.                                    |
+| `coding-style/github-workflows.md` | Writing or editing GitHub workflows or CI scripts.           |
 | `roles/code-reviewer.md`           | You are asked to review code or a pull-request.              |
 | `roles/product-manager.md`         | You are asked to act as product manager.                     |
 | `roles/product-architect.md`       | You are asked to act as product architect.                   |
