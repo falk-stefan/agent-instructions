@@ -1,1 +1,1 @@
-Immediatelly read [AGENT.md](./AGENT.md) and follow the instructions throughout the entire session!
+Immediately read [AGENT.md](./AGENT.md) and follow the instructions throughout the entire session!

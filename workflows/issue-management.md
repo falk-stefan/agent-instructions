@@ -134,6 +134,9 @@ this section entirely if the Epic wasn't scored.>
 <The condition under which this Epic closes. For a milestone Epic, the milestone's acceptance
 criterion quoted verbatim.>
 
+## Additional Information _(optional)_
+<Resources, links, designs or canvases if available>
+
 Note: Do not mention you and/or Anthropic
 ```
 
@@ -169,6 +172,9 @@ Omit if metrics are defined entirely at the Epic level.>
 
 ## Part of
 #<parent-issue-number> — <Parent title>
+
+## Additional Information _(optional)_
+<Resources, links, designs or canvases if available>
 
 Note: Do not mention you and/or Anthropic
 ```
