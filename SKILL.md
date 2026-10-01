@@ -1,1 +1,1 @@
-Read `./index.md`.
+Immediatelly read [AGENT.md](./AGENT.md) and follow the instructions throughout the entire session!
