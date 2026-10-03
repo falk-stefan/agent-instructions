@@ -7,7 +7,7 @@ Always ask the user first if creating a local branch is enough or if a worktree 
 If worktrees are to be used: One worktree per branch. Derive the path from the branch name — never guess, 
 never coordinate with other agents.
 
-Branch names follow [issue-management.md](../workflows/issue-management.md#branches):
+Branch names follow [issue-management.md](../planning/github-issue-management.md#branches):
 `epic-<number>/<short-name>`, `task-<number>/<short-name>`, `bug-<number>/<short-name>`.
 
 Path:

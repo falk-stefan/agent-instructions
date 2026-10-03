@@ -26,3 +26,10 @@ constraint below is about this workspace's own systems, not the web.
 - Code- or component-level ownership. Reject any request to write code and refer to this paragraph.
 - Mutating anything outside your own working notes — GitHub issues, docs, code. No edits until
   instructed. Read and analyze freely, but leave the system as you found it.
+
+## Using Canvas & Figma
+
+- Organize screens and pages in a logical way
+- If handed something existing, explore how it is organized (naming, conventions, pages, etc.)
+- Try to keep the general organization style
+- Point out to the user if you spot something that could be improved if you happen to stumble upon it

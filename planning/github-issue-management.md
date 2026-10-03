@@ -3,6 +3,7 @@
 ## Purpose
 
 Transform a high-level product idea into a structured GitHub Issues hierarchy that:
+
 - Provides stable issue references for commits and PRs
 - Creates searchable context usable by humans and agents across separate sessions
 
@@ -23,15 +24,17 @@ qualified form: `<owner>/<repo>#N`.
 
 ## Hierarchy
 
-GitHub is flat by nature. We impose structure via **labels** and **sub-issues**. These serve different purposes and are both used:
+GitHub is flat by nature. We impose structure via **labels** and **sub-issues**. These serve different purposes and are
+both used:
+
 - **Sub-issues** — model the parent-child relationship between Epics and Tasks in the GitHub UI
 - **Labels** — enable filtering by type (`gh issue list --label task`); they are not redundant with sub-issues
 
-| Level | Label | Description |
-|-------|-------|-------------|
-| Epic  | `epic` | High-level initiative. Tasks are attached as sub-issues. |
+| Level | Label  | Description                                                            |
+|-------|--------|------------------------------------------------------------------------|
+| Epic  | `epic` | High-level initiative. Tasks are attached as sub-issues.               |
 | Task  | `task` | Isolated unit of work. Always added as a sub-issue of its parent Epic. |
-| Bug   | `bug`  | A defect. Added as a sub-issue of an Epic if part of a larger effort. |
+| Bug   | `bug`  | A defect. Added as a sub-issue of an Epic if part of a larger effort.  |
 
 A Task is worth creating when it can be worked and reviewed on its own. Work that only makes sense
 merged with its neighbour is an acceptance criterion on that neighbour, not a Task of its own — an
@@ -47,9 +50,11 @@ the title with a component name, and compose them freely with type labels — an
 `task` and a component. Run `gh label list` to see the components in use; create a new one only
 when a genuinely new area of the system appears.
 
-Linking convention: every Task/Bug is attached to its parent Epic via GitHub's native sub-issues API (not just a body reference). The body may still include a `## Part of` section for human readability.
+Linking convention: every Task/Bug is attached to its parent Epic via GitHub's native sub-issues API (not just a body
+reference). The body may still include a `## Part of` section for human readability.
 
-**Sub-issue completion** is driven by issue state: closing an issue marks it complete in the Epic's progress bar automatically. No manual checklist updates needed.
+**Sub-issue completion** is driven by issue state: closing an issue marks it complete in the Epic's progress bar
+automatically. No manual checklist updates needed.
 
 ### Epics
 
@@ -73,12 +78,21 @@ idea arrives, and leave them childless until there is work to attach.
 Follow these steps in order whenever asked to create issues.
 
 1. **Clarify** — If the request is fundamentally unclear, ask before proceeding.
-2. **Check for duplicates** — Search the repo before creating anything: `gh issue list --search "<keywords>" --state all`. Include closed issues; a bug filed twice is usually one that was closed once already. If an Epic covering the work exists, create Tasks under it instead of a new Epic.
-3. **Investigate** — Read the relevant code. Collect what the Context section needs: files involved, decisions already settled, acceptance criteria.
-4. **Draft** — Draft each issue body from the templates below, using what step 3 turned up. Only the body is drafted; the title and labels are passed via CLI. For an Epic, if the user hasn't mentioned or excluded a RICE score, ask whether to add one; if yes, run [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) and include its output under `## RICE`.
+2. **Check for duplicates** — Search the repo before creating anything:
+   `gh issue list --search "<keywords>" --state all`. Include closed issues; a bug filed twice is usually one that was
+   closed once already. If an Epic covering the work exists, create Tasks under it instead of a new Epic.
+3. **Investigate** — Read the relevant code. Collect what the Context section needs: files involved, decisions already
+   settled, acceptance criteria.
+4. **Draft** — Draft each issue body from the templates below, using what step 3 turned up. Only the body is drafted;
+   the title and labels are passed via CLI. For an Epic, if the user hasn't mentioned or excluded a RICE score, ask
+   whether to add one; if yes, run [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) and include its
+   output under `## RICE`.
 5. **Review with user** — Show the draft and ask for approval before creating anything.
-6. **Create** — Run the CLI commands. Add labels, add Tasks as sub-issues of their Epic, and add all issues to the project board. `gh issue create --label` fails if the label does not exist in the repo yet, so check `gh label list` first and create what is missing: `gh label create <name> --description "<what it marks>"`.
-7. **Create branch** — After creating the Epic, ask the user whether to create its branch now (see below). Skip if they want to defer it.
+6. **Create** — Run the CLI commands. Add labels, add Tasks as sub-issues of their Epic, and add all issues to the
+   project board. `gh issue create --label` fails if the label does not exist in the repo yet, so check `gh label list`
+   first and create what is missing: `gh label create <name> --description "<what it marks>"`.
+7. **Create branch** — After creating the Epic, ask the user whether to create its branch now (see below). Skip if they
+   want to defer it.
 
 ---
 
@@ -92,132 +106,8 @@ Follow these steps in order whenever asked to create issues.
 
 `<number>` is the issue number and `<short-name>` is a few kebab-case words from the title. An
 Epic's branch merges to the default branch when the Epic's closing condition is met, not when its
-last Task lands. Branches for individual tasks from epics are optionsl. Standalone tasks can branch from the default branch.
-
----
-
-## Writing Style
-
-Follow [writing-style.md](../conventions/writing-style.md). One rule specific to issues: no
-implementation detail in Epics.
-
----
-
-## Templates
-
-### Epic
-
-GitHub tracks sub-issue progress natively — no `## Tasks` checklist needed in the body.
-
-```markdown
-## Description
-<What is being built or changed — one short paragraph or bullets.>
-
-## Motivation
-<Why this matters — one short paragraph or bullets.>
-
-## Functional Requirements
-- <User/product-facing statement of what the feature must do.>
-- <Another requirement — concrete but not implementation-specific.>
-
-## Success Metrics _(optional)_
-<Metrics that help measure adoption, usage, or impact of the feature, including relevant
-behavior events. Consider whether any metrics could also be useful to expose publicly
-to users, creators, or other stakeholders.>
-
-## RICE _(optional)_
-<Score and argument breakdown from
-[pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md), in its output format. Omit
-this section entirely if the Epic wasn't scored.>
-
-## Closing Condition
-<The condition under which this Epic closes. For a milestone Epic, the milestone's acceptance
-criterion quoted verbatim.>
-
-## Additional Information _(optional)_
-<Resources, links, designs or canvases if available>
-
-Note: Do not mention you and/or Anthropic
-```
-
-Labels: `epic`, `feature` (or `enhancement` / `bug`)
-
----
-
-### Task
-
-```markdown
-## Description
-<What specifically needs to be done — concrete and scoped.>
-
-## Motivation
-<Why this matters — one short paragraph>
-
-## User / Component Capabilities
-
-### Before _(optional)_
-<The behavior before. Not required for entirely new features.>
-
-### After
-<What users can do, or a component is capable of, after this is implemented that was not possible before.>
-
-## Implementation Details
-<How we plan to implement this — conceptually, not necessarily in high detail. Refencing classes or files as starting points is allowed.>
-
-## Testing
-<Critical paths or behavior to test — what core functionality should be covered by tests?>
-
-## Success Metrics _(optional)_
-<Behavior events or measurements that this Task needs to introduce or change.
-Omit if metrics are defined entirely at the Epic level.>
-
-## Acceptance criteria:
-<What must be true for this to be done. Observable, not a restatement of the description.>
-<Another criterion.>
-
-## Part of
-#<parent-issue-number> — <Parent title>
-
-## Additional Information _(optional)_
-<Resources, links, designs or canvases if available>
-
-Note: Do not mention you and/or Anthropic
-```
-
-Labels: `task`
-
----
-
-### Bug
-
-```markdown
-## Description
-<What is broken.>
-
-## Impact
-<How this issue affects stability, quality or user experience>
-
-## Steps to Reproduce
-1. ...
-2. ...
-
-## Expected vs Actual
-- **Expected:** ...
-- **Actual:** ...
-
-## Testing
-<What test(s) can we implement to avoid a regression?>
-
-## Part of
-#<epic-issue-number> — <Epic title>  _(omit if standalone)_
-
-## Context
-- **Files involved:** `<path/to/file>`, `<path/to/other>`, ...
-- **Acceptance criteria:**
-    - <What must be true for this to be fixed — usually that the reproduction no longer reproduces.>
-```
-
-Labels: `bug`
+last Task lands. Branches for individual tasks from epics are optionsl. Standalone tasks can branch from the default
+branch.
 
 ---
 
@@ -300,10 +190,12 @@ gh api repos/<owner>/<target-repo>/issues/<new-parent>/sub_issues --method POST 
 
 ## Closing Issues via PR
 
-Add `Closes #N` (or `Fixes #N`) to a PR description to auto-close the issue when the PR merges. This also marks the sub-issue complete in the Epic's progress bar:
+Add `Closes #N` (or `Fixes #N`) to a PR description to auto-close the issue when the PR merges. This also marks the
+sub-issue complete in the Epic's progress bar:
 
 ```markdown
 ## Summary
+
 - <What the PR does>
 
 Closes #<number>
@@ -327,10 +219,3 @@ Same [repo scope](#repo-scope) rule applies: across repos, use `Closes <owner>/<
 - **Cross-link related issues with the fully qualified form** (`<owner>/<repo>#<number>`) in a
   Task's `## Part of` line, since a bare `#<number>` resolves to the current repo.
 - **All repositories share one project board.**
-
----
-
-## Related
-
-- [commit-messages.md](../conventions/commit-messages.md) — referencing issues from commits
-- [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) — scoring an Epic's RICE section

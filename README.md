@@ -1,7 +1,6 @@
 # Agent Instructions
 
-A small, portable library of instructions for coding agents (Claude Code and similar). Drop it
-into any project and point the agent at `index.md`.
+A portable library of instructions for coding agents (Claude Code and similar). 
 
 ## Why
 
@@ -10,23 +9,29 @@ small, single-purpose files, grouped by topic, loaded only when relevant. `index
 dispatch table: it tells the agent which file to read for which task, so nothing gets loaded
 unless the task at hand actually needs it.
 
-## Structure
+## How To Use 
 
-- `index.md` — the lookup table. Start here.
-- `conventions/` — writing and commit conventions.
-- `coding-style/` — language- and framework-specific style rules.
-- `workflows/` — multi-step procedures (issue management, git worktrees, ...).
-- `roles/` — role definitions for agents acting as a specific persona
-- `agentic-workflows/` — procedures that coordinate multiple agents/roles against each other
+- Clone this repository into `.claude/skills/agent-instructions`
+- Create a hook for claude to load the skill immediately
 
-## Using it in a project
+In `.claude/settings.json` or `.claude/settings.local.json`:
 
-Clone this repo as a sibling checkout inside the project's workspace — not a git submodule.
-Submodules add friction (detached HEAD, stale pointer commits) without a real benefit here, since
-this repo evolves independently of the projects that consume it.
-
-Point the project's own agent instructions (e.g. its `CLAUDE.md`) at `agent-instructions/index.md`
-so agents know to check it.
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'CRITICAL: Load the agent-instructions skill before anything else!'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
 ## Principles
 

@@ -1,7 +1,7 @@
 # Commit Messages
 
 - Reference all relevant issues in the commit message. Issue numbers are per-repo — see
-  [issue-management.md](../workflows/issue-management.md#repo-scope). Use `<owner>/<repo>#N` when
+  [issue-management.md](../planning/github-issue-management.md#repo-scope). Use `<owner>/<repo>#N` when
   the issue lives in a different repo than the commit.
 - Provide a short description of the change
 - Never credit an agent, tool, model, or its vendor. No `Co-Authored-By` trailer for one, no
@@ -9,5 +9,5 @@
   the human who ran the work. The same applies to PR titles and descriptions.
 
 To close an issue when a PR merges, see
-[issue-management.md](../workflows/issue-management.md#closing-issues-via-pr) — the `Closes #N`
+[issue-management.md](../planning/github-issue-management.md#closing-issues-via-pr) — the `Closes #N`
 keyword belongs in the PR description, not in the commit message.

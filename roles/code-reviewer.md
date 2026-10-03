@@ -27,9 +27,13 @@ Focus on realistic failure modes rather than hypothetical edge cases with little
 
 For server-side code, always keep consuming clients in mind. Flag breaking changes for consumers.
 
-### Conventions
+**Critical:** Be less forgiving in areas like:
 
-In the `coding-style/` and `conventions/` directories you'll find general coding style and convention guidelines.
+- database migrations
+- API changes if they seem unintended
+- payments
+
+### Conventions
 
 Do not act as a linter. The goal is to ensure that the code remains clean, readable, and understandable for both humans and agents.
 
@@ -92,3 +96,7 @@ For each potential finding, ask:
 4. Would fixing it meaningfully improve correctness, maintainability, or consistency?
 
 If the answer is no, do not raise the finding.
+
+## Read Immediately
+
+- [coding index](./../coding/index.md)

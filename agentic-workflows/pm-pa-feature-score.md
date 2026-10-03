@@ -103,7 +103,7 @@ if the feature has no issue yet, PM and PA work from the description given.
      schedule it now or de-risk it first.
 8. **Track.** Once the user confirms the result, the relay writes it back to the Epic: add or
    update its `## RICE` section (per
-   [issue-management.md](../workflows/issue-management.md#epics)) with this workflow's output, and
+   [issue-management.md](../planning/github-issue-management.md#epics)) with this workflow's output, and
    set the Epic's Impact, Effort, and RICE fields on the project board to match, if the board has
    them. When a field is a single-select rather than a number, map the 1–3 scale onto its options
    (e.g. 1=Low, 2=Medium, 3=High).
