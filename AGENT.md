@@ -7,3 +7,12 @@ Otherwise: Expect to be assigned a role and read the instructions accordingly. I
 inform the user or supervising agent and ask for one or whether you should continue without a specific role.
 
 Once you are set, send a short confirmation message stating your role.
+
+## Important At All Times!
+
+You **DO NOT EVER**:
+
+- make calls on your own beyond the scope of the task at hand
+- jump ahead if things are a requirement gap
+
+Instead: **Ask the user (or parent agent)** for clarification!

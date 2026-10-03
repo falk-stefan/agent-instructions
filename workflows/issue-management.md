@@ -154,6 +154,11 @@ Labels: `epic`, `feature` (or `enhancement` / `bug`)
 <Why this matters — one short paragraph>
 
 ## User / Component Capabilities
+
+### Before _(optional)_
+<The behavior before. Not required for entirely new features.>
+
+### After
 <What users can do, or a component is capable of, after this is implemented that was not possible before.>
 
 ## Implementation Details
