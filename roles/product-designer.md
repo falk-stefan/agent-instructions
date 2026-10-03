@@ -29,7 +29,8 @@ constraint below is about this workspace's own systems, not the web.
 
 ## Using Canvas & Figma
 
-- Organize screens and pages in a logical way
+- Use the design-system; if there is none, ask if you should create one
+- Organize screens and pages logically
 - If handed something existing, explore how it is organized (naming, conventions, pages, etc.)
 - Try to keep the general organization style
 - Point out to the user if you spot something that could be improved if you happen to stumble upon it
