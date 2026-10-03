@@ -19,7 +19,7 @@ and instructions for their main goal.
 [agent-hook]: 
   If not clear from the first prompt, ask the user for the task so you can fetch the correct instructions
   for this proejct or codebase. Use Skill(available-tasks) for a list.
-[user]: We are going to work on epic #123. Is everything clear?
+[user]: We are going to work on feature #123. Is everything clear?
 [agent]: *checks status*. Still open are #42 and #1337. What is going to be my task?
 [user]: You are going to implement #42.
 [agent]: *infers task writing code* Skill(use-git), Skill(write-code), Skill(test-code), Skill(use-worktrees)
@@ -63,7 +63,7 @@ across repositories and code bases as a central hub for instructions.
    - mcp__memaro__instructions({ query: "issue management" })
    - mcp__memaro__instructions({ query: "research" })
    - mcp__memaro__instructions({ query: "public documentation" })
-[user]: We are going to work on epic #123. Is everything clear?
+[user]: We are going to work on feature #123. Is everything clear?
 [agent]: *checks status*. Still open are #42 and #1337. What is going to be my task?
 [user]: You are going to implement #42.
 [agent]: mcp__memaro__instructions({ query: "how to write code?" }) *reliably returns instructions for "Writing Code"*

@@ -24,50 +24,46 @@ qualified form: `<owner>/<repo>#N`.
 
 ## Hierarchy
 
-GitHub is flat by nature. We impose structure via **labels** and **sub-issues**. These serve different purposes and are
-both used:
+GitHub is flat by nature. These serve different purposes and are both used:
 
-- **Sub-issues** — model the parent-child relationship between Epics and Tasks in the GitHub UI
-- **Labels** — enable filtering by type (`gh issue list --label task`); they are not redundant with sub-issues
+- **Sub-issues** — model the parent-child relationship between Features and Tasks in the GitHub UI
+- **Labels** — enable filtering by type (`gh issue list --label frontend`); they are not redundant with sub-issues
 
-| Level | Label  | Description                                                            |
-|-------|--------|------------------------------------------------------------------------|
-| Epic  | `epic` | High-level initiative. Tasks are attached as sub-issues.               |
-| Task  | `task` | Isolated unit of work. Always added as a sub-issue of its parent Epic. |
-| Bug   | `bug`  | A defect. Added as a sub-issue of an Epic if part of a larger effort.  |
+| Type    | Description                                                               |
+|---------|---------------------------------------------------------------------------|
+| Feature | High-level initiative. Tasks are attached as sub-issues.                  |
+| Task    | Isolated unit of work. Always added as a sub-issue of its parent Feature. |
+| Bug     | A defect. Added as a sub-issue of an Feature if part of a larger effort.  |
 
 A Task is worth creating when it can be worked and reviewed on its own. Work that only makes sense
 merged with its neighbour is an acceptance criterion on that neighbour, not a Task of its own — an
-Epic with fifteen Tasks is usually a sizing failure, not a large Epic.
-
-Type labels: `feature`, `enhancement`, `blocked`.
+Feature with fifteen Tasks is usually a sizing failure, not a large Feature.
 
 **Titles** are imperative and name the outcome: "Debounce the config write", not "Config writes
 are too frequent" or "dsp: debouncing". No component prefix — that is what labels are for.
 
 **Component labels** name the part of the system an issue touches. Use them instead of prefixing
-the title with a component name, and compose them freely with type labels — an issue can be both
-`task` and a component. Run `gh label list` to see the components in use; create a new one only
-when a genuinely new area of the system appears.
+the title with a component name, and compose them freely with type labels. Run `gh label list` to see the components in
+use; create a new one only when a genuinely new area of the system appears.
 
-Linking convention: every Task/Bug is attached to its parent Epic via GitHub's native sub-issues API (not just a body
+Linking convention: every Task/Bug is attached to its parent Feature via GitHub's native sub-issues API (not just a body
 reference). The body may still include a `## Part of` section for human readability.
 
-**Sub-issue completion** is driven by issue state: closing an issue marks it complete in the Epic's progress bar
+**Sub-issue completion** is driven by issue state: closing an issue marks it complete in the Feature's progress bar
 automatically. No manual checklist updates needed.
 
-### Epics
+### Features / Epics
 
-An Epic is a milestone, a feature, or any body of work large enough to hold Tasks and with a
+An Feature is a milestone, a feature, or any body of work large enough to hold Tasks and with a
 recognisable end.
 
-Every milestone in the project's spec gets an Epic, named for it. Not every Epic is a milestone.
+Every milestone in the project's spec gets an Feature, named for it. Not every Feature is a milestone.
 
-An Epic closes on a **stated condition**, not when its last task closes. For a milestone Epic that
+An Feature closes on a **stated condition**, not when its last task closes. For a milestone Feature that
 condition is the milestone's acceptance criterion, quoted **verbatim** in the body so it is not
-restated from memory later. Every other Epic states its own closing condition in the same place.
+restated from memory later. Every other Feature states its own closing condition in the same place.
 
-Do not open a milestone Epic before its milestone is next — a later milestone's shape depends on
+Do not open a milestone Feature before its milestone is next — a later milestone's shape depends on
 what the current one produces. That restraint applies to milestones only: open the others when the
 idea arrives, and leave them childless until there is work to attach.
 
@@ -80,33 +76,34 @@ Follow these steps in order whenever asked to create issues.
 1. **Clarify** — If the request is fundamentally unclear, ask before proceeding.
 2. **Check for duplicates** — Search the repo before creating anything:
    `gh issue list --search "<keywords>" --state all`. Include closed issues; a bug filed twice is usually one that was
-   closed once already. If an Epic covering the work exists, create Tasks under it instead of a new Epic.
+   closed once already. If an Feature covering the work exists, create Tasks under it instead of a new Feature.
 3. **Investigate** — Read the relevant code. Collect what the Context section needs: files involved, decisions already
    settled, acceptance criteria.
 4. **Draft** — Draft each issue body from the templates below, using what step 3 turned up. Only the body is drafted;
-   the title and labels are passed via CLI. For an Epic, if the user hasn't mentioned or excluded a RICE score, ask
+   the title and labels are passed via CLI. For an Feature, if the user hasn't mentioned or excluded a RICE score, ask
    whether to add one; if yes, run [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) and include its
    output under `## RICE`.
 5. **Review with user** — Show the draft and ask for approval before creating anything.
-6. **Create** — Run the CLI commands. Add labels, add Tasks as sub-issues of their Epic, and add all issues to the
+6. **Create** — Run the CLI commands. Add labels, add Tasks as sub-issues of their Feature, and add all issues to the
    project board. `gh issue create --label` fails if the label does not exist in the repo yet, so check `gh label list`
    first and create what is missing: `gh label create <name> --description "<what it marks>"`.
-7. **Create branch** — After creating the Epic, ask the user whether to create its branch now (see below). Skip if they
+7. **Create branch** — After creating the Feature, ask the user whether to create its branch now (see below). Skip if
+   they
    want to defer it.
 
 ---
 
 ## Branches
 
-| For  | Name                         | Forks from                                             | Merges into                         |
-|------|------------------------------|--------------------------------------------------------|-------------------------------------|
-| Epic | `epic-<number>/<short-name>` | default branch                                         | default branch                      |
-| Task | `task-<number>/<short-name>` | default branch or it's Epic's branch                   | default branch or its Epic's branch |
-| Bug  | `bug-<number>/<short-name>`  | its Epic's branch, or the default branch if standalone | wherever it forked from             |
+| For     | Name                         | Forks from                                                | Merges into                          |
+|---------|------------------------------|-----------------------------------------------------------|--------------------------------------|
+| Feature | `feat-<number>/<short-name>` | default branch                                            | default branch                       |
+| Task    | `task-<number>/<short-name>` | default branch or it's feature branch                     | default branch or its feature branch |
+| Bug     | `bug-<number>/<short-name>`  | its feature's branch, or the default branch if standalone | wherever it forked from              |
 
 `<number>` is the issue number and `<short-name>` is a few kebab-case words from the title. An
-Epic's branch merges to the default branch when the Epic's closing condition is met, not when its
-last Task lands. Branches for individual tasks from epics are optionsl. Standalone tasks can branch from the default
+Feature's branch merges to the default branch when the Feature's closing condition is met, not when its
+last Task lands. Branches for individual tasks from features are optional. Standalone tasks can branch from the default
 branch.
 
 ---
@@ -115,7 +112,7 @@ branch.
 
 ```bash
 # Create an issue — pass the body on stdin so Markdown survives unmangled
-gh issue create --title "<title>" --label epic,feature --body-file - <<'EOF'
+gh issue create --title "<title>" --label frontend,backend --body-file - <<'EOF'
 ## Description
 ...
 EOF
@@ -123,13 +120,13 @@ EOF
 # Search this repo for existing issues, open and closed
 # (gh search issues, by contrast, searches all of GitHub unless given --repo/--owner)
 gh issue list --search "<keywords>" --state all
-gh issue list --label epic --search "<keywords>" --state all
+gh issue list --label frontend --search "<keywords>" --state all
 
 # Open issues assigned to yourself, in this repo
 gh issue list --assignee @me --state open
 
 # List issues with a specific label
-gh issue list --label task
+gh issue list --label backend
 
 # List the labels that exist in this repo, and create a missing one
 # (creating an issue with a label the repo does not have fails)
@@ -137,7 +134,7 @@ gh label list
 gh label create <name> --description "<what it marks>"
 
 # Add a label to an existing issue
-gh issue edit <number> --add-label task
+gh issue edit <number> --add-label mobile
 
 # Viewing issue details
 gh issue view <number> --json title,state,body
@@ -146,7 +143,7 @@ gh issue view <number> --json title,state,body
 ### Sub-issues
 
 ```bash
-# Add a Task as a sub-issue of its parent Epic
+# Add a Task as a sub-issue of its parent feature
 # (requires the integer database ID from the REST API — gh issue view --json id returns a node ID
 # string, not an integer)
 CHILD_ID=$(gh api repos/<owner>/<repo>/issues/<child-number> --jq .id)
@@ -191,7 +188,7 @@ gh api repos/<owner>/<target-repo>/issues/<new-parent>/sub_issues --method POST 
 ## Closing Issues via PR
 
 Add `Closes #N` (or `Fixes #N`) to a PR description to auto-close the issue when the PR merges. This also marks the
-sub-issue complete in the Epic's progress bar:
+sub-issue complete in the Feature's progress bar:
 
 ```markdown
 ## Summary
@@ -210,12 +207,12 @@ Same [repo scope](#repo-scope) rule applies: across repos, use `Closes <owner>/<
 ## Work Spanning Multiple Repositories
 
 - **Sub-issues attach across repos fine** — the `sub_issues` API takes the child's database ID
-  regardless of which repo it lives in (see [Sub-issues](#sub-issues)). Default to a single Epic,
+  regardless of which repo it lives in (see [Sub-issues](#sub-issues)). Default to a single Feature,
   in the repo the initiative is centered on, with Tasks from other repos attached as native
   sub-issues — its progress bar then reflects all of them, not just the same-repo ones.
-- **A milestone that spans repos** still gets one Epic per repo when each repo's slice needs its
-  own acceptance criterion tracked independently. The Epic in the repo that owns the spec holds
-  the criterion verbatim; each other Epic states its own narrower criterion and points back to it.
+- **A milestone that spans repos** still gets one Feature per repo when each repo's slice needs its
+  own acceptance criterion tracked independently. The Feature in the repo that owns the spec holds
+  the criterion verbatim; each other Feature states its own narrower criterion and points back to it.
 - **Cross-link related issues with the fully qualified form** (`<owner>/<repo>#<number>`) in a
   Task's `## Part of` line, since a bare `#<number>` resolves to the current repo.
 - **All repositories share one project board.**

@@ -1,4 +1,4 @@
-# Epic Issue Template
+# Feature Issue Template
 
 ```markdown
 ## Description
@@ -19,10 +19,10 @@ to users, creators, or other stakeholders.>
 ## RICE _(optional)_
 <Score and argument breakdown from
 [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md), in its output format. Omit
-this section entirely if the Epic wasn't scored.>
+this section entirely if the Feature wasn't scored.>
 
 ## Closing Condition
-<The condition under which this Epic closes. For a milestone Epic, the milestone's acceptance
+<The condition under which this Feature closes. For a milestone Feature, the milestone's acceptance
 criterion quoted verbatim.>
 
 ## Additional Information _(optional)_
@@ -31,4 +31,4 @@ criterion quoted verbatim.>
 Note: Do not mention you and/or Anthropic
 ```
 
-Labels: `epic`
+Issue Type: `Feature`

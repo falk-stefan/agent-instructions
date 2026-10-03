@@ -8,7 +8,7 @@ If worktrees are to be used: One worktree per branch. Derive the path from the b
 never coordinate with other agents.
 
 Branch names follow [issue-management.md](../planning/github-issue-management.md#branches):
-`epic-<number>/<short-name>`, `task-<number>/<short-name>`, `bug-<number>/<short-name>`.
+`feature-<number>/<short-name>`, `task-<number>/<short-name>`, `bug-<number>/<short-name>`.
 
 Path:
 
@@ -16,8 +16,8 @@ Path:
 ../worktrees/<repo>/<branch-name>
 ```
 
-Example: `epic-75/search-filters` in `tourah` lives at
-`tourah-workspace/worktrees/tourah/epic-75/search-filters`.
+Example: `feature-75/search-filters` in `tourah` lives at
+`tourah-workspace/worktrees/tourah/feature-75/search-filters`.
 
 ## Steps
 

@@ -23,7 +23,7 @@
 
 ## Success Metrics _(optional)_
 <Behavior events or measurements that this Task needs to introduce or change.
-Omit if metrics are defined entirely at the Epic level.>
+Omit if metrics are defined entirely at the Feature level.>
 
 ## Acceptance criteria:
 <What must be true for this to be done. Observable, not a restatement of the description.>
@@ -38,4 +38,4 @@ Omit if metrics are defined entirely at the Epic level.>
 Note: Do not mention you and/or Anthropic
 ```
 
-Labels: `task`
+Issue Type: `Task`

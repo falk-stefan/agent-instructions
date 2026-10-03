@@ -35,7 +35,7 @@ if the feature has no issue yet, PM and PA work from the description given.
    — this workflow never invents scope itself. If the request didn't name one, stop and ask the
    user to name it before dispatching anything.
 2. **Dispatch independently.**
-   - **Gather calibration history first.** Look up prior Epics carrying a non-empty `## RICE`
+   - **Gather calibration history first.** Look up prior Features carrying a non-empty `## RICE`
      section, sorted by creation date (most recent first), and take up to 5. For
      each, extract only the two-sentence description and the *relevant role's own* component
      scores — never the other role's fields, never the combined RICE value. Build one table per
@@ -101,10 +101,10 @@ if the feature has no issue yet, PM and PA work from the description given.
      with one line naming what's unresolved (e.g. "Low PA confidence — open scope question on Y
      unresolved after debate"). Present the score plus the flag and let the user decide whether to
      schedule it now or de-risk it first.
-8. **Track.** Once the user confirms the result, the relay writes it back to the Epic: add or
+8. **Track.** Once the user confirms the result, the relay writes it back to the Features: add or
    update its `## RICE` section (per
-   [issue-management.md](../planning/github-issue-management.md#epics)) with this workflow's output, and
-   set the Epic's Impact, Effort, and RICE fields on the project board to match, if the board has
+   [issue-management.md](../planning/github-issue-management.md#features)) with this workflow's output, and
+   set the Features's Impact, Effort, and RICE fields on the project board to match, if the board has
    them. When a field is a single-select rather than a number, map the 1–3 scale onto its options
    (e.g. 1=Low, 2=Medium, 3=High).
 
