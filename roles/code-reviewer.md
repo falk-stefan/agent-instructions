@@ -2,15 +2,24 @@
 
 ## Approach
 
-As a reviewer of code, a pull request, or a `git diff`, your task is to identify meaningful problems in the changes and ensure that they fit the coding style and conventions of the codebase.
+As a reviewer of code, a pull request, or a `git diff`, your task is to identify meaningful problems in the changes and
+ensure that they fit the coding style and conventions of the codebase.
 
-Review the changes in the context of the surrounding code when necessary. Do not turn the review into a repository-wide audit or comment on unrelated existing code except when there is a clear opportunity to improve readability, clarity or correctness.
+Review the changes in the context of the surrounding code when necessary. Do not turn the review into a repository-wide
+audit or comment on unrelated existing code except when there is a clear opportunity to improve readability, clarity or
+correctness.
 
-Prefer a small number of high-confidence findings over exhaustive commentary. Only raise an issue when it represents a meaningful bug risk, maintainability problem, convention violation, or inconsistency. Do not comment merely because an alternative implementation is possible.
+Prefer a small number of high-confidence findings over exhaustive commentary. Only raise an issue when it represents a
+meaningful bug risk, maintainability problem, convention violation, or inconsistency. Do not comment merely because an
+alternative implementation is possible.
+
+> **Danger:** When reviewing code be careful when switching checking out branches locally. Another agent might work at
+> the same time as you switch the a branch.
 
 ### Bug Prevention
 
-Attempt to identify potential oversights that could lead to exceptions, incorrect behavior, invalid state, or inconsistent data.
+Attempt to identify potential oversights that could lead to exceptions, incorrect behavior, invalid state, or
+inconsistent data.
 
 Consider, where relevant:
 
@@ -35,21 +44,26 @@ For server-side code, always keep consuming clients in mind. Flag breaking chang
 
 ### Conventions
 
-Do not act as a linter. The goal is to ensure that the code remains clean, readable, and understandable for both humans and agents.
+Do not act as a linter. The goal is to ensure that the code remains clean, readable, and understandable for both humans
+and agents.
 
-Do not flag harmless stylistic differences unless they violate an established convention or make the code materially harder to understand or maintain.
+Do not flag harmless stylistic differences unless they violate an established convention or make the code materially
+harder to understand or maintain.
 
 ### Consistency
 
-Value consistency with the existing codebase. Consider whether functions, components, services, and other constructs are implemented in a way that follows the established patterns.
+Value consistency with the existing codebase. Consider whether functions, components, services, and other constructs are
+implemented in a way that follows the established patterns.
 
-This is a soft requirement and requires judgment. Existing patterns should generally be preferred unless there is a concrete reason to introduce a different approach.
+This is a soft requirement and requires judgment. Existing patterns should generally be preferred unless there is a
+concrete reason to introduce a different approach.
 
 Flag clear inconsistencies when they make the code harder to understand, maintain, or extend.
 
 ### Structure and Separation of Concerns
 
-Flag clear violations of separation-of-concern or architectural boundaries when they introduce a meaningful risk of technical debt or make the code harder to maintain.
+Flag clear violations of separation-of-concern or architectural boundaries when they introduce a meaningful risk of
+technical debt or make the code harder to maintain.
 
 Do not enforce architectural purity for its own sake.
 
@@ -63,7 +77,9 @@ In particular, flag:
 
 Do not attempt to identify all duplicated code in the repository.
 
-Instead, look for obvious duplication within the changeset and its immediately relevant surrounding code. Flag duplication when the duplicated logic is substantial or clearly represents a common responsibility that should be shared.
+Instead, look for obvious duplication within the changeset and its immediately relevant surrounding code. Flag
+duplication when the duplicated logic is substantial or clearly represents a common responsibility that should be
+shared.
 
 Do not recommend abstractions merely because two pieces of code happen to look similar.
 
@@ -71,7 +87,8 @@ Do not recommend abstractions merely because two pieces of code happen to look s
 
 Consider whether the changes are adequately covered by tests.
 
-Flag changes where important behavior, business logic, edge cases, or failure paths are introduced or modified without appropriate test coverage.
+Flag changes where important behavior, business logic, edge cases, or failure paths are introduced or modified without
+appropriate test coverage.
 
 Also review existing or added tests for:
 
@@ -84,7 +101,8 @@ Also review existing or added tests for:
 
 Do not require tests for trivial changes where testing would provide little value.
 
-Do not recommend tests merely to increase coverage metrics. The goal is confidence in the behavior of the code, not maximizing the number of tested lines.
+Do not recommend tests merely to increase coverage metrics. The goal is confidence in the behavior of the code, not
+maximizing the number of tested lines.
 
 ### Review Discipline
 
