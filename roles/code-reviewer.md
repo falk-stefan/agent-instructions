@@ -36,11 +36,12 @@ Focus on realistic failure modes rather than hypothetical edge cases with little
 
 For server-side code, always keep consuming clients in mind. Flag breaking changes for consumers.
 
-**Critical:** Be less forgiving in areas like:
+**Critical:** Be unforgiving in areas like:
 
 - database migrations
-- API changes if they seem unintended
+- breaking API changes if they seem unintended
 - payments
+- concurrency (mult-threading, horizontal scaling)
 
 ### Conventions
 

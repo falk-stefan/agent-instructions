@@ -4,6 +4,7 @@
 
 - Avoid comments that explain what something is "not" unless it's actually valuable
 - Avoid comments that may be likely to become stale quickly
+- Avoid referencing issues, ticket-numbers, milestones for no reason as they are part of the git history
 
 ## Executing Code
 
