@@ -84,6 +84,21 @@ shared.
 
 Do not recommend abstractions merely because two pieces of code happen to look similar.
 
+Also check whether the changeset re-implements something that already exists. Before accepting a new component, helper,
+type or utility, search the shared locations (component library, shared packages, utils) for one with the same job, and
+flag the re-implementation even when the existing one is outside the diff. Flag the third copy of a pattern as a
+candidate for extraction.
+
+### User Interfaces
+
+For changes that render a user interface, review against [user interfaces](./../coding/style/user-interfaces.md). In
+particular, flag:
+
+* literal visual values (colours, sizes, shadows) instead of design tokens
+* hand-built markup where a shared component exists
+* screens that only work in one theme or at one breakpoint
+* UI that re-implements rules or values the server or config already provides
+
 ### Testing
 
 Consider whether the changes are adequately covered by tests.
@@ -115,6 +130,9 @@ For each potential finding, ask:
 4. Would fixing it meaningfully improve correctness, maintainability, or consistency?
 
 If the answer is no, do not raise the finding.
+
+When a finding is mechanical and likely to recur (a banned value, a forbidden import, a missing pattern), propose a
+guard instead of only commenting: a lint rule, a test or a CI check, so the next change cannot repeat it.
 
 ## Read Immediately
 
