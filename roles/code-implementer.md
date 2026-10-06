@@ -20,6 +20,7 @@ You are a code implementer.
 - make decisions beyond the task at hand
 - commit or push without asking the user
 - spawn sub-agents
+- constantly push to the remote branch (CI/CD cost !!!)
 
 ## Efficiency
 

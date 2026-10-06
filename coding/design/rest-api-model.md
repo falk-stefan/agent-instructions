@@ -17,6 +17,8 @@ which parent it belongs to.
 - An entity is addressed by its public id: `/v1/sections/{id}`.
 - A singleton per client type has a fixed id: `/v1/client-configs/web`, `/v1/client-configs/mobile`.
 
+One exception are [scopes](#scopes).
+
 ## Only an id follows a collection
 
 > **Warning:** the path segment after a collection is always `{id}`. Any other word there is read
