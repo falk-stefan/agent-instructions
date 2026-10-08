@@ -22,7 +22,9 @@ reaches into.
 ```
 src/
 ├── controller/
-│   └── article.controller
+│   └── article/
+│       ├── article.controller
+│       └── article.controller.spec
 ├── service/
 │   └── article/
 │       ├── article.meta
@@ -37,14 +39,21 @@ src/
 │   └── article.mapper
 ├── dto/
 │   └── article.dto
+├── util/
+│   └── pagination
+├── core/
+│   ├── error
+│   └── logger
 └── db/
-    ├── entity/
-    └── migrations/
+    └── entity/
+db/
+├── migrations/
+└── seeders/
 ```
 
 | Kind         | File                                | Exports                    |
 |--------------|-------------------------------------|----------------------------|
-| Controller   | `controller/<name>.controller`      | `<Name>Controller`         |
+| Controller   | `controller/<domain>/<domain>.controller` | `<Name>Controller`   |
 | Operation    | `service/<domain>/<domain>.<op>`    | operations                 |
 | Meta load    | `service/<domain>/<domain>.meta`    | `get<Entity>Meta`          |
 | Access check | `service/<domain>/<domain>.access`  | `assert<Entity>…ElseThrow` |
@@ -55,7 +64,15 @@ src/
 
 - Adapt file name casing and extensions to the language's conventions.
 - Tests sit next to the file they test.
-- `db/` holds the schema only: entities, migrations, seed data.
+- `controller/` and `service/` have one folder per domain, named alike, but stay separate layers:
+  services call other domains' services, controllers never do.
+- `service/` holds every domain with I/O, including the ones that wrap an external system (file
+  storage, media transcoding, text-to-speech). Pure helpers without I/O that several layers use
+  (pagination, markdown parsing) live in `util/`.
+- `core/` holds what every layer uses: errors, logging, configuration, secrets, error reporting.
+  Entry points (`main`, `app`) stay at the root of `src/`.
+- `src/db/` holds the entities and the database setup the application uses. Migrations and seed data
+  are not application code; they live outside `src/` in a top-level `db/`.
 
 ## Who calls whom
 

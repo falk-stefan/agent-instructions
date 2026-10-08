@@ -204,6 +204,23 @@ GET /v1/articles/{id}/stats    → owner or admin, else 403
 | 404    | No entity has this id                                      |
 | 409    | The entity's state doesn't allow it, e.g. submitting twice |
 
+## One folder per collection
+
+The code follows the collections, not the URL nesting. Each top-level collection is one domain
+with its own controller and service folder, named after its entity (see
+`backend-abstraction-layers.md`):
+
+| API | Code |
+|---|---|
+| Collection `/v1/sections` | `controller/section/`, `service/section/` |
+| Method on the collection or an entity | an op file: `section.read`, `section.update`, `section.order` |
+| Action `POST /v1/articles/{id}/submit` | an op file in the entity's domain: `article.submit` |
+| Part `/v1/articles/{id}/cover-image` | an op file in the entity's domain: `article.cover-image` |
+| Computed resource `POST /v1/directions` | its own domain: `directions.create` |
+
+A flat API therefore gives flat folders: `/v1/article-reviews` is the domain `article-review`,
+next to `article`, not inside it.
+
 ## One group per entity
 
 Each endpoint is grouped (tagged) by its entity in the API spec. A generated client then has one
