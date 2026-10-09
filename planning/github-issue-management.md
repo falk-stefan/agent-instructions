@@ -27,7 +27,8 @@ qualified form: `<owner>/<repo>#N`.
 GitHub is flat by nature. These serve different purposes and are both used:
 
 - **Sub-issues** — model the parent-child relationship between Features and Tasks in the GitHub UI
-- **Labels** — enable filtering by type (`gh issue list --label frontend`); they are not redundant with sub-issues
+- **Issue Types** — mark an issue as Feature, Task or Bug (`gh issue create --type Task`). Never use labels for the type
+- **Labels** — name components and enable filtering (`gh issue list --label frontend`); they are not redundant with sub-issues
 
 | Type    | Description                                                               |
 |---------|---------------------------------------------------------------------------|
@@ -43,7 +44,7 @@ Feature with fifteen Tasks is usually a sizing failure, not a large Feature.
 are too frequent" or "dsp: debouncing". No component prefix — that is what labels are for.
 
 **Component labels** name the part of the system an issue touches. Use them instead of prefixing
-the title with a component name, and compose them freely with type labels. Run `gh label list` to see the components in
+the title with a component name. The type is set as the Issue Type, never as a label. Run `gh label list` to see the components in
 use; create a new one only when a genuinely new area of the system appears.
 
 Linking convention: every Task/Bug is attached to its parent Feature via GitHub's native sub-issues API (not just a body
@@ -80,11 +81,11 @@ Follow these steps in order whenever asked to create issues.
 3. **Investigate** — Read the relevant code. Collect what the Context section needs: files involved, decisions already
    settled, acceptance criteria.
 4. **Draft** — Draft each issue body from the templates below, using what step 3 turned up. Only the body is drafted;
-   the title and labels are passed via CLI. For an Feature, if the user hasn't mentioned or excluded a RICE score, ask
+   the title, Issue Type and labels are passed via CLI. For an Feature, if the user hasn't mentioned or excluded a RICE score, ask
    whether to add one; if yes, run [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) and include its
    output under `## RICE`.
 5. **Review with user** — Show the draft and ask for approval before creating anything.
-6. **Create** — Run the CLI commands. Add labels, add Tasks as sub-issues of their Feature, and add all issues to the
+6. **Create** — Run the CLI commands. Set the Issue Type, add labels, add Tasks as sub-issues of their Feature, and add all issues to the
    project board. `gh issue create --label` fails if the label does not exist in the repo yet, so check `gh label list`
    first and create what is missing: `gh label create <name> --description "<what it marks>"`.
 7. **Create branch** — After creating the Feature, ask the user whether to create its branch now (see below). Skip if
@@ -112,7 +113,7 @@ branch.
 
 ```bash
 # Create an issue — pass the body on stdin so Markdown survives unmangled
-gh issue create --title "<title>" --label frontend,backend --body-file - <<'EOF'
+gh issue create --title "<title>" --type Task --label frontend,backend --body-file - <<'EOF'
 ## Description
 ...
 EOF
