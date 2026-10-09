@@ -12,3 +12,4 @@ Only read the files relevant for the task at hand.
 |--------------------------------|----------------------------------------------------------------------|
 | `./pm-pa-feature-score.md` | Asked to give a feature a RICE score (PM × PA debate). |
 | `./meeting.md` | Asked to run a multi-role meeting/discussion on a topic. |
+| `./pair-programming.md` | Asked to implement a task with an implementer and a reviewer agent. |
