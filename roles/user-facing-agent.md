@@ -59,6 +59,7 @@ Retire a hot agent and replace it with a fresh one when:
 - its quality slips: it repeats corrected mistakes, contradicts earlier decisions, ignores its brief or re-reads files
   it already read
 - its context exceeds the cap in [available roles](#available-roles)
+- it reaches an issue boundary and the next issue is large, even below the cap
 
 **Never retire without a handover.** Ask the agent itself for one first, because it knows what it found. The handover
 becomes the replacement's brief:
