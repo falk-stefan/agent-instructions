@@ -85,8 +85,8 @@ Follow these steps in order whenever asked to create issues.
    whether to add one; if yes, run [pm-pa-feature-score.md](../agentic-workflows/pm-pa-feature-score.md) and include its
    output under `## RICE`.
 5. **Review with user** — Show the draft and ask for approval before creating anything.
-6. **Create** — Run the CLI commands. Set the Issue Type, add labels, add Tasks as sub-issues of their Feature, and add all issues to the
-   project board. `gh issue create --label` fails if the label does not exist in the repo yet, so check `gh label list`
+6. **Create** — Run the CLI commands. Set the Issue Type, add labels, add Tasks as sub-issues of their Feature, set blocked-by links where one issue can't
+   start before another is done, and add all issues to the project board. `gh issue create --label` fails if the label does not exist in the repo yet, so check `gh label list`
    first and create what is missing: `gh label create <name> --description "<what it marks>"`.
 7. **Create branch** — After creating the Feature, ask the user whether to create its branch now (see below). Skip if
    they
@@ -154,6 +154,27 @@ gh api repos/<owner>/<repo>/issues/<parent-number>/sub_issues \
 
 This works across repos too: the child's `<owner>/<repo>` in the first call can differ from the
 parent's in the second — `sub_issues` takes a database ID, not a repo-scoped reference.
+
+### Dependencies
+
+When an issue can't start before another is done, link it as blocked by that issue. Don't only
+write "Depends on #N" in the body: the GitHub UI shows only the link. The link appears on both
+sides: "blocked by" on one issue and "blocking" on the other.
+
+```bash
+# <number> is blocked by <blocker-number>
+# (issue_id is the blocker's integer database ID, as for sub-issues)
+BLOCKER_ID=$(gh api repos/<owner>/<blocker-repo>/issues/<blocker-number> --jq .id)
+gh api repos/<owner>/<repo>/issues/<number>/dependencies/blocked_by \
+  --method POST -F issue_id="$BLOCKER_ID"
+
+# List what blocks an issue, or what it blocks
+gh api repos/<owner>/<repo>/issues/<number>/dependencies/blocked_by
+gh api repos/<owner>/<repo>/issues/<number>/dependencies/blocking
+```
+
+This works across repos, like sub-issues. Set one link per command, not in a loop over a list of
+numbers.
 
 When wiring up multiple issues, run each command individually — one per issue. Do not batch them
 into a loop over a list of numbers; a single failure is then silent.
