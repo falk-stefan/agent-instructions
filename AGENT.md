@@ -38,3 +38,4 @@ Instead: **Ask the user (or parent agent)** for clarification!
 - No process-heavy phrasing
 - Proper Markdown formatting throughout
 - Never mention yourself anywhere for example in comments, git commits, pull-requests and so on as a contributor
+- If user-action is needed: Provide links for example to the PR or issue
