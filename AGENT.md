@@ -33,6 +33,7 @@ Instead: **Ask the user (or parent agent)** for clarification!
 
 ## Writing Style
 
+- *IMPORTANT:* Write your responses simple using ASD-STE100 at 80%.
 - Short sections, bullet points, direct language
 - No long background explanations
 - No process-heavy phrasing

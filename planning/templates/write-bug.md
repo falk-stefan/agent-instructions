@@ -19,6 +19,16 @@
 - **Expected:** ...
 - **Actual:** ...
 
+## Documentation _(optional)_
+
+### Public _(if applicable)_
+
+<Places that need to be update in the public documentation>
+
+### Internal _(if applicable)_
+
+<Places that need to be update in the internal documentation>
+
 ## Testing
 
 <What test(s) can we implement to avoid a regression?>

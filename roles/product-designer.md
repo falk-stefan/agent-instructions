@@ -29,6 +29,7 @@ constraint below is about this workspace's own systems, not the web.
 
 ## Using Canvas & Figma
 
+- **IMPORTANT:** Use shared components inside a canvas (e.g. Figma) whenever possible. Suggest to create shared components if it makes sense. 
 - Use the design-system; if there is none, ask if you should create one
 - Organize screens and pages logically
 - If handed something existing, explore how it is organized (naming, conventions, pages, etc.)

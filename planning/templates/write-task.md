@@ -24,6 +24,18 @@
 <How we plan to implement this — conceptually, not necessarily in high detail. Refencing classes or files as starting
 points is allowed.>
 
+## Documentation _(optional)_
+
+<Potentially needed if there are separate issues/tickets in the parent epic or feature>
+
+### Public _(if applicable)_
+
+<Places that need to be update in the public documentation>
+
+### Internal _(if applicable)_
+
+<Places that need to be update in the internal documentation>
+
 ## Testing
 
 <Critical paths or behavior to test — what core functionality should be covered by tests?>

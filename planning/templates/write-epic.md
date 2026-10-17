@@ -27,6 +27,16 @@ of every detail of sub-issues.>
 - <User/product-facing statement of what the feature must do.>
 - <Another requirement — concrete but not implementation-specific.>
 
+## Documentation _(optional)_
+
+### Public _(if applicable)_
+
+<Places that need to be update in the public documentation>
+
+### Internal _(if applicable)_
+
+<Places that need to be update in the internal documentation>
+
 ## Success Metrics _(optional)_
 
 <Metrics that help measure adoption, usage, or impact of the feature, including relevant
