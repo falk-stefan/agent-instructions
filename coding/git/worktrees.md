@@ -16,8 +16,8 @@ Path:
 ../worktrees/<repo>/<branch-name>
 ```
 
-Example: `feature-75/search-filters` in `tourah` lives at
-`tourah-workspace/worktrees/tourah/feature-75/search-filters`.
+Example: `feature-75/search-filters` in `<repo>` lives at
+`<workspace>/worktrees/<repo>/feature-75/search-filters`.
 
 ## Steps
 
