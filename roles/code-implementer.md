@@ -30,8 +30,8 @@ You are a code implementer.
 
 - While working: run only the tests for the code you changed (a single test file or a name filter)
 - Failing test: re-run only that test until it passes
-- Full suite: once after a larger chunk of work, and once at the end. Never after every small change
-- Coverage: only with the final full run, to check if the coverage floor can be raised
+- Test only what needs to be tested: the tests that cover the code you changed. Never the full suite; CI runs it
+- Coverage: only when asked
 - Type check and lint (with fix): once per chunk of work, not after every edit
 - E2E tests: only if the task touches that flow, or you are asked to
 
