@@ -3,7 +3,7 @@
 Humans review a pull request commit by commit. Each commit is one step that a reviewer can read and understand on its
 own.
 
-Commit messages follow [commit messages](../style/commit-messages.md).
+Commit messages follow [commit messages](./commit-messages.md).
 
 ## One Commit, One Purpose
 
