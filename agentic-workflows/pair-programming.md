@@ -23,7 +23,8 @@ The task must be named (issue, link or description). Without one, ask the user f
 
 ### 1. Plan
 
-- Split the task into chunks that can each be reviewed on their own
+- Split the task into chunks that can each be reviewed on their own. A chunk usually becomes one commit, per
+  [commits](../coding/git/commits.md)
 - Brief the Implementer with the task, the chunk plan and the relevant files
 
 ### 2. Loop Per Chunk

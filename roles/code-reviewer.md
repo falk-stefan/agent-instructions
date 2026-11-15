@@ -112,6 +112,11 @@ type or utility, search the shared locations (component library, shared packages
 flag the re-implementation even when the existing one is outside the diff. Flag the third copy of a pattern as a
 candidate for extraction.
 
+### Commits
+
+For a pull request, check the commits against [commits](./../coding/git/commits.md). Flag only clear problems: one
+commit that mixes a refactor with a behaviour change, or noise commits ("wip", "fix lint") that should be squashed.
+
 ### User Interfaces
 
 For changes that render a user interface, review against [user interfaces](./../coding/style/user-interfaces.md). In
