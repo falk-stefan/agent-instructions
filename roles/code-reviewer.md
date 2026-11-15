@@ -73,6 +73,29 @@ In particular, flag:
 * code that is obviously located in the wrong directory or package
 * utility logic that clearly belongs in a shared location but is implemented locally or duplicated
 * responsibilities that are unnecessarily mixed in a way that makes the code harder to change or test
+* logic placed in a layer that does not own it, e.g. business rules in a controller, route handler or UI component
+* one change that leaks across many layers when one layer could own it
+
+### Least Invasive Change
+
+The best change solves the task and touches as little as possible. Flag a changeset that is more invasive than the task
+needs:
+
+* rewrites, moves or renames of working code that the task does not need
+* new abstractions, layers, options or dependencies where existing ones would do
+* changes to public interfaces (API, shared types, function signatures) when a local change would do
+* unrelated clean-ups mixed into the change. They belong in a separate commit or PR.
+
+For each finding, name the smaller alternative.
+
+### Repetitive Changes
+
+The same edit in many places is a warning sign. Examples: the same new parameter passed through many call sites, the
+same check added to every handler, the same mapping copied into every component.
+
+Ask: can this change live in one central place instead (a shared helper, a base class, a middleware, a default, a
+config)? If yes, flag it and name that place. Accept the repetition only when there is no sensible central place, or
+when centralizing would make the code harder to follow.
 
 ### Code Duplication
 
