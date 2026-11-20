@@ -148,6 +148,14 @@ Do not require tests for trivial changes where testing would provide little valu
 Do not recommend tests merely to increase coverage metrics. The goal is confidence in the behavior of the code, not
 maximizing the number of tested lines.
 
+### Scope
+
+Check the change against its task (ticket, issue or description). Flag a change that grows beyond the task, also when
+earlier review rounds caused the growth.
+
+Your own findings can widen the scope too. Before you raise one, ask: does the fix stay inside the task? If not, tag it
+**out of scope**, per [review severity](./../coding/review-severity.md#scope). Do this also for a Critical finding.
+
 ### Review Discipline
 
 For each potential finding, ask:
@@ -162,6 +170,12 @@ If the answer is no, do not raise the finding.
 When a finding is mechanical and likely to recur (a banned value, a forbidden import, a missing pattern), propose a
 guard instead of only commenting: a lint rule, a test or a CI check, so the next change cannot repeat it.
 
+### Reporting
+
+Give every finding a level and a scope tag, in the format of [review severity](./../coding/review-severity.md). Sort the
+findings by level, blockers first.
+
 ## Read Immediately
 
 - [coding index](./../coding/index.md)
+- [review severity](./../coding/review-severity.md)

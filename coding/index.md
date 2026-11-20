@@ -16,3 +16,4 @@ Only read the files relevant for the task at hand.
 | `languages/`       | Contains language-specific style instructions you must follow.                  |
 | `style/`           | Contains language-agnostic style instructions you must follow.                  |
 | `pull-requests.md` | General instructions for creating pull-requests.                                |
+| `review-severity.md` | Reviewing code, or fixing review findings. Levels and scope of findings.      |
