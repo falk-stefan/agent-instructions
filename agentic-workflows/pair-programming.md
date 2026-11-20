@@ -82,7 +82,8 @@ Per [review severity](../coding/review-severity.md#disagreement).
 ## Guardrails
 
 - Neither agent commits or pushes without the user's approval
-- Never call a change ready unless a Reviewer saw its exact head commit
+- Never call a change ready unless a Reviewer saw its latest code change. Trivial changes after the last review do
+  not need a new round, per [pull requests](../coding/pull-requests.md)
 - Retire and replace an agent per [hot and cold agents](../roles/user-facing-agent.md#hot-and-cold-agents)
 - Reports follow [reports](../roles/user-facing-agent.md#reports)
 
