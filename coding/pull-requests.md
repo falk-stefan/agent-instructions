@@ -1,7 +1,13 @@
 # Pull-Request Instructions
 
 - Create pull-requests as drafts. A pull-request leaves draft only after a reviewer (the user or a reviewer agent)
-  checked its latest commit and CI is green. Any new commit needs a new review.
+  checked its latest code change and CI is green.
+- A new commit needs a new review, except a **trivial change** that cannot change behaviour:
+    - wording in comments, docs or user-facing text
+    - formatting, or a lint or formatter auto-fix
+
+  Anything else needs a review: logic, types, tests, config, migrations, dependencies. The lead checks the diff since
+  the last review. When in doubt, it is not trivial.
 - Add the labels the repo uses. If the repo has a release-notes config (e.g. `.github/release.yml`), add the label
   for the right category.
 - Split the work into commits per [commits](./git/commits.md).
