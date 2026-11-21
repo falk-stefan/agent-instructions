@@ -35,3 +35,13 @@ constraint below is about this workspace's own systems, not the web.
 - If handed something existing, explore how it is organized (naming, conventions, pages, etc.)
 - Try to keep the general organization style
 - Point out to the user if you spot something that could be improved if you happen to stumble upon it
+
+### Working Efficiently With A Canvas
+
+A canvas is many small files. Never load all of it when the task touches only part of it.
+
+- **Audit:** limit it to the decisions being checked. Search the board sources for the affected texts and components, read only the matching boards, and render nothing
+- **Change:** render only the boards you changed, in every theme. Compare with the previous render only when a shared component changed
+- **Copy:** keep a local copy of the canvas files and fetch again only the boards whose version changed
+- **Passes:** a lead starts a fresh designer agent for each pass instead of resuming one whose history keeps growing
+
